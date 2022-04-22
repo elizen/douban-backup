@@ -430,6 +430,7 @@ async function addToNotion(itemData, category) {
       // fill in properties by the format: https://developers.notion.com/reference/page#page-property-value
       properties,
     };
+    console.log({properties: properties})
     if (properties[DB_PROPERTIES.POSTER]) {
       // use poster for the page cover
       // postData.cover = {
@@ -440,7 +441,7 @@ async function addToNotion(itemData, category) {
       // }
 
       // show content image instead of cover for easier copy and paste
-      postData.children = [
+      poster = [
         {
           object: 'block',
           type: 'image',
