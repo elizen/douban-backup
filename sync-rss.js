@@ -399,6 +399,7 @@ async function addToNotion(itemData, category) {
     // @TODO: refactor this to add property value generator by value type
     let properties = {};
     const keys = Object.keys(DB_PROPERTIES);
+    console.log(itemData);
     keys.forEach(key => {
       if (itemData[DB_PROPERTIES[key]]) {
         properties[DB_PROPERTIES[key]] = getPropertyValye(itemData[DB_PROPERTIES[key]], PropertyType[key], DB_PROPERTIES[key]);
