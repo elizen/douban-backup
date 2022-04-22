@@ -432,12 +432,26 @@ async function addToNotion(itemData, category) {
     };
     if (properties[DB_PROPERTIES.POSTER]) {
       // use poster for the page cover
-      postData.cover = {
-        type: 'external',
-        external: {
-          url: properties[DB_PROPERTIES.POSTER]?.files[0]?.external?.url, // cannot be empty string or null
-        },
-      }
+      // postData.cover = {
+      //   type: 'external',
+      //   external: {
+      //     url: properties[DB_PROPERTIES.POSTER]?.files[0]?.external?.url, // cannot be empty string or null
+      //   },
+      // }
+
+      // show content image instead of cover for easier copy and paste
+      postData.children = [
+        {
+          object: 'block',
+          type: 'image',
+          image: {
+            type: 'external',
+            external: {
+              url: properties[DB_PROPERTIES.POSTER]?.files[0]?.external?.url, // cannot be empty string or null
+            },
+          }
+        }
+      ];
     }
     console.log('postData: ', postData);
     const response = await notion.pages.create(postData);
