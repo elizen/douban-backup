@@ -443,7 +443,7 @@ async function addToNotion(itemData, category) {
       // }
 
       // show content image instead of cover for easier copy and paste
-      poster = [
+      postData.children = [
         {
           object: 'block',
           type: 'image',
@@ -455,6 +455,8 @@ async function addToNotion(itemData, category) {
           }
         }
       ];
+      // because we don't have the poster column, otherwise it's gonna fail to insert
+      delete properties[DB_PROPERTIES.POSTER];
     }
     console.log('postData: ', postData);
     const response = await notion.pages.create(postData);
