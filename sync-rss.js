@@ -415,7 +415,8 @@ async function addToNotion(itemData, category) {
     // remove cols which are not in the current database
     const propKeys = Object.keys(properties);
     propKeys.map(prop => {
-      if (columns.indexOf(prop) < 0) {
+      // we don't have 海报 in db as we're puting it in content
+      if (columns.indexOf(prop) < 0 && prop != DB_PROPERTIES.POSTER) {
         delete properties[prop];
       }
     });
