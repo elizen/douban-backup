@@ -439,6 +439,7 @@ async function addToNotion(itemData, category) {
         },
       }
     }
+    console.log('postData: ', postData);
     const response = await notion.pages.create(postData);
     if (response && response.id) {
       console.log(itemData[DB_PROPERTIES.TITLE] + `[${itemData[DB_PROPERTIES.ITEM_LINK]}]` + ' page created.');
